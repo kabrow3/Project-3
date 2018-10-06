@@ -1,7 +1,7 @@
 const router = require("express").Router();
-const dummyRoutes = require("./dummies");
+const auth = require('./auth');
 
-// Book routes
-router.use("/dummy", dummyRoutes);
+// /api/auth
+router.use('/auth', auth);
 
 module.exports = router;

@@ -1,45 +1,47 @@
 // Dependencies
+const path = require('path');
+const bodyParser = require('body-parser');
 const express = require("express");
-const app = express();
+const session = require('express-session');
+const passport = require('passport');
+const db = require("./models");
+const routes = require("./routes");
+
 const PORT = process.env.PORT || 3001;
 
+const app = express();
+
 // Configure middleware aka body-parser for AJAX requests
-app.use(express.urlencoded({extended:true}));
-app.use(express.json());
+app.use(bodyParser.urlencoded({ extended:true }));
+app.use(bodyParser.json());
 
 // Serve up static assets
 app.use(express.static("client/build"));
 
+// Passport
+app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
+
 // Add routes
-const routes = require("./routes");
 app.use(routes);
 
+if (process.env.NODE_ENV === 'production') {
+  app.get('*', (req, res) => res.sendFile(path.join(__dirname, 'client/build/index.html')));
+}
+// NODE_ENV=production node server.js
 
-// {========================================================}
-// // for if we use Mongo/Mongoose
-// var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/tw-app";
-// //Set up promises with mongoose
-// mongoose.Promise = global.Promise;
-// // Connect to database
-// mongoose.connect(
-//     MONGODB_URI
-//   );
-// {========================================================}
-//                      MONGO ABOVE ^^^^^
-//                      MYSQL BELOW vvvvv
-// {========================================================}
-//   // For if we use mySQL/Sequelize
-// var db = require("./models");
-// var syncOptions = { force: false };
-// // If running a test, set syncOptions.force to true
-// // clearing the `testdb`
-// if (process.env.NODE_ENV === "test") {
-//   syncOptions.force = true;
-// }
+
+var syncOptions = { force: false };
+// If running a test, set syncOptions.force to true
+// clearing the `testdb`
+if (process.env.NODE_ENV === "test") {
+  syncOptions.force = true;
+}
 
 // Starting the server, syncing our models ------------------------------------/
-//db.sequelize.sync(syncOptions).then(function() {
+db.sequelize.sync(syncOptions).then(function() {
   app.listen(PORT, function() {
     console.log(`🌎  ==> API Server now listening on ${PORT}`);
   });
-// });
+});
