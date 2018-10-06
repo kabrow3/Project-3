@@ -1,12 +1,6 @@
+import axios from 'axios';
 import React from "react";
-
-const InputBox = props => (
-    <div className="form-group">
-        <label htmlFor={props.name}>{props.label}</label>
-        <br/>
-        <input type={props.type || "text"} className="form-control validate" name={props.name} value={props.value} onChange={props.onChange} />
-    </div>
-);
+import InputBox from "../../components/InputBox"
 
 class CreateAcc extends React.Component {
     state = {
@@ -17,10 +11,23 @@ class CreateAcc extends React.Component {
 
     handleChange = (e) => this.setState({ [e.target.name]: e.target.value });
 
-    handleClick = (e) => {
+    handleClick = async (e) => {
         e.preventDefault()
 
-        console.log(this.state);
+        // axios.post('/api/auth', this.state)
+        //     .then(res => console.log(res.data))
+        //     .catch(err => console.log(err));
+
+        try {
+            const { data } = await axios.post('/api/auth/signup', this.state);
+
+            console.log(data);
+
+            this.setState({ email: "", password: "", username: "" });
+
+        } catch (err) {
+            console.log(err);
+        }
     }
 
     render () {
