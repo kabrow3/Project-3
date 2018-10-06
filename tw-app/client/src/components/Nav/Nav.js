@@ -1,17 +1,32 @@
 import React from "react";
+import Modal from "react-responsive-modal";
+import SignInModal from "../SignInModal";
 import "./Nav.css"
 
-const Nav = () => (
-    <div>
-                <ul className="nav navbar-dark nav-fill text-white py-3">
-                    <li className="nav-item">
-                        <a className="nav-link active" href="">I Hate</a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link disabled">React</a>
-                    </li>
-                </ul>
-            </div>
-);
+// https://www.styled-components.com/
+
+class Nav extends React.Component {
+  state = {
+    open: false
+  };
+
+  onOpenModal = () => {
+    this.setState({ open: true });
+  };
+
+  onCloseModal = () => {
+    this.setState({ open: false });
+  };
+
+  render() {
+    return (
+      <div>
+        <h1>Hello</h1>
+        <button onClick={this.onOpenModal}>Open modal</button>
+        <SignInModal open={this.state.open} onCloseModal={this.onCloseModal} />
+      </div>
+    );
+  }
+}
 
 export default Nav;
