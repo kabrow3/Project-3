@@ -27,6 +27,7 @@ const App = () => (
       </Switch>
     </div>
   </Router>
+  <Footer />
 );
 
 export default App;
