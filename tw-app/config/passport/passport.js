@@ -8,11 +8,11 @@ module.exports = function(passport, user) {
     "local-signin",
     new LocalStrategy(
       {
-        usernameField: "username",
+        usernameField: "email",
         passwordField: "password",
         passReqToCallback: true
       },
-      (req, username, password, done) => {
+      (req, email, password, done) => {
         const User = user;
         const isValidPassword = (userPass, pass) => bCrypt.compareSync(pass, userPass);
 
