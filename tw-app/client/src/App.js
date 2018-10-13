@@ -4,6 +4,7 @@ import NoMatch from "./pages/NoMatch";
 import CreateAcc from "./pages/CreateAcc";
 import UserPage from "./pages/UserPage";
 import Nav from "./components/Nav";
+import LandingPage from "./pages/LandingPage";
 
 const App = () => (
   <Router>
@@ -11,7 +12,7 @@ const App = () => (
       <Nav />
       <Switch>
         <Route exact path="/" 
-        // component={} 
+        component={LandingPage} 
         />
         <Route exact path="/dummy" 
         // component={} 
