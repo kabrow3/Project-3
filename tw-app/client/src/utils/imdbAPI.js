@@ -15,7 +15,7 @@ export default {
     return imdb.search({name: sq}, {apiKey: '8ff70e2d'});
   },
   getTV: function(sq) {
-    return imdb.get({name:'How I Met Your Mother'}, {apiKey: '8ff70e2d'}).then((things) => {
+    return imdb.get({name: sq}, {apiKey: '8ff70e2d'}).then((things) => {
         return things.episodes()
     }).then((eps) => {
         console.log(eps);

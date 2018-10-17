@@ -4,7 +4,7 @@ import InputBox from "../../components/InputBox";
 import Movie from "../../components/Movie";
 import Movies from "../../components/Movies";
 
-class CreateAcc extends React.Component {
+class LandingPage extends React.Component {
     state = {
         sq: "",
         info: {
@@ -62,4 +62,4 @@ class CreateAcc extends React.Component {
     }
 }
 
-export default CreateAcc;
+export default LandingPage;
