@@ -21,7 +21,7 @@ class Nav extends React.Component {
   render() {
     return (
       <div>
-        <nav className="navbar navbar-dark bg-dark">
+        <nav className="navbar navbar--dark bg-dark">
         <button onClick={this.onOpenModal} className="btn btn-outline-success">Login</button>
         </nav>
         
