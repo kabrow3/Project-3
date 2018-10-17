@@ -18,9 +18,11 @@ module.exports = function(sequelize, DataTypes) {
       password: DataTypes.STRING
     });
   
-    // User.associate = function(models) {
-    //   User.hasMany(models.Blurbs);
-    // };
+    User.associate = function(models) {
+      User.hasMany(models.Blurb);
+      // for favourite movies list
+      User.hasMany(models.Movie);
+    };
     return User;
   };
   

@@ -1,8 +1,10 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import NoMatch from "./pages/NoMatch";
-import CreateAcc from "./pages/CreateAcc"
+import CreateAcc from "./pages/CreateAcc";
+import UserPage from "./pages/UserPage";
 import Nav from "./components/Nav";
+import LandingPage from "./pages/LandingPage";
 
 const App = () => (
   <Router>
@@ -10,7 +12,7 @@ const App = () => (
       <Nav />
       <Switch>
         <Route exact path="/" 
-        // component={} 
+        component={LandingPage} 
         />
         <Route exact path="/dummy" 
         // component={} 
@@ -20,6 +22,9 @@ const App = () => (
         />
         <Route exact path="/create-account" 
          component={CreateAcc} 
+        />
+        <Route exact path="/my-account" 
+         component={UserPage} 
         />
         <Route 
          component={NoMatch} 

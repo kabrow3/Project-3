@@ -41,10 +41,10 @@ class CreateAcc extends React.Component {
                         <span className="card-title"><h3>Create Account</h3></span>
                         
                         <form className="container">
-                                <InputBox type="text" name="username" label="Username" value={this.state.username} onChange={this.handleChange}/>
-                                <InputBox type="email" name="email" label="Email" value={this.state.email} onChange={this.handleChange}/>
-                                <InputBox type="password" name="password" label="Password" value={this.state.password} onChange={this.handleChange}/>
-                                <button type="submit" className="btn btn-primary" onClick={this.handleClick}>Submit</button>
+                            <InputBox type="text" name="username" label="Username" value={this.state.username} onChange={this.handleChange}/>
+                            <InputBox type="email" name="email" label="Email" value={this.state.email} onChange={this.handleChange}/>
+                            <InputBox type="password" name="password" label="Password" value={this.state.password} onChange={this.handleChange}/>
+                            <button type="submit" className="btn btn-primary" onClick={this.handleClick}>Submit</button>
                         </form>
 
                         </div> 

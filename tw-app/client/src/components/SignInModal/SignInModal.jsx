@@ -38,13 +38,14 @@ class SignInModal extends React.Component {
         <br />
         <h4 className="text-center">Please, login into your account</h4>
         <form id="signIn" name="signIn" className="col-sm-12">
-          <div className="row">
+          <div className="">
             <InputBox type="email" name="email" label="Email" value={this.state.email} onChange={this.handleChange} />
           </div>
-          <div className="row">
+          <div className="">
             <InputBox type="password" name="password" label="Password" value={this.state.password} onChange={this.handleChange} />
           </div>
-          <div className='row'>
+          <div className=''>
+          <br/>
             <button type='submit' className='col-sm-12 btn btn-primary' onClick={this.handleClick}>Login</button>
           </div>
         </form>
