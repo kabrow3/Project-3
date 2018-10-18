@@ -1,21 +1,22 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import NoMatch from "./pages/NoMatch";
-import Landing from "./pages/LandingPage"
 import CreateAcc from "./pages/CreateAcc";
 import UserPage from "./pages/UserPage";
 import Nav from "./components/Nav";
+import LandingPage from "./pages/LandingPage";
+import DetailsPage from "./pages/DetailsPage";
 
 const App = () => (
   <Router>
     <div>
       <Nav />
       <Switch>
-      <Route exact path="/" 
-         component={Landing} 
+        <Route exact path="/" 
+        component={LandingPage} 
         />
-        <Route exact path="/dummy" 
-        // component={} 
+        <Route exact path="/details/:id" 
+        component={DetailsPage} 
         />
         <Route exact path="/dummy/:id" 
         // component={} 
@@ -23,7 +24,6 @@ const App = () => (
         <Route exact path="/create-account" 
          component={CreateAcc} 
         />
-        
         <Route exact path="/my-account" 
          component={UserPage} 
         />

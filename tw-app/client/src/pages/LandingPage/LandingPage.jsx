@@ -1,10 +1,17 @@
-import axios from 'axios';
+import imdbAPI from "../../utils/imdbAPI";
 import React from "react";
-import InputBox from "../../components/InputBox"
+import InputBox from "../../components/InputBox";
+import Movie from "../../components/Movie";
+import Movies from "../../components/Movies";
 
-class CreateAcc extends React.Component {
+class LandingPage extends React.Component {
     state = {
-        sq: ""
+        sq: "",
+        info: {
+            title: "",
+            poster: "",
+            imdbid: ""
+        }
     };
 
     handleChange = (e) => this.setState({ [e.target.name]: e.target.value });
@@ -12,11 +19,19 @@ class CreateAcc extends React.Component {
     handleClick = async (e) => {
         e.preventDefault()
 
-        // axios.post('/api/auth', this.state)
-        //     .then(res => console.log(res.data))
-        //     .catch(err => console.log(err));
-        console.log(this.state);
-        
+        console.log(this.state.sq);
+
+        imdbAPI.getMovie(this.state.sq).then(res => {
+            console.log("RES", res);
+
+            this.setState({
+            info: {
+                title: res.title,
+                poster: res.poster,
+                imdbid: res.imdbid
+            }
+        }, () => console.log(this.state));
+    });
     }
 
     render () {
@@ -30,8 +45,8 @@ class CreateAcc extends React.Component {
                         <span className="card-title"><h3>Search Movie</h3></span>
                         
                         <form className="container">
-                                <InputBox type="text" name="sq" label="Search" value={this.state.sq} onChange={this.handleChange}/>
-                                <button type="submit" className="btn btn-primary" onClick={this.handleClick}>Submit</button>
+                            <InputBox type="text" name="sq" label="Search" value={this.state.sq} onChange={this.handleChange}/>
+                            <button type="submit" className="btn btn-primary" onClick={this.handleClick}>Submit</button>
                         </form>
 
                         </div> 
@@ -39,9 +54,12 @@ class CreateAcc extends React.Component {
 
                     </div>
                 </div>
+                {/* <Movies> */}
+                    <Movie />
+                {/* </Movies> */}
             </div>
         );
     }
 }
 
-export default CreateAcc;
+export default LandingPage;
