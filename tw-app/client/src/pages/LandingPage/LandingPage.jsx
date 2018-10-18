@@ -54,9 +54,9 @@ class LandingPage extends React.Component {
 
                     </div>
                 </div>
-                <Movies>
+                {/* <Movies> */}
                     <Movie />
-                </Movies>
+                {/* </Movies> */}
             </div>
         );
     }
