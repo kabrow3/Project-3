@@ -1,10 +1,11 @@
 import imdbAPI from "../../utils/imdbAPI";
 import React from "react";
+import { Link } from "react-router-dom";
 import InputBox from "../../components/InputBox";
 import Movie from "../../components/Movie";
 import Movies from "../../components/Movies";
 
-class LandingPage extends React.Component {
+class MovieSearch extends React.Component {
     state = {
         sq: "",
         info: {
@@ -22,7 +23,7 @@ class LandingPage extends React.Component {
 
         console.log(this.state.sq);
 
-        imdbAPI.getTV(this.state.sq).then(res => {
+        imdbAPI.getMovie(this.state.sq).then(res => {
             console.log("RES", res);
 
             this.setState({
@@ -64,4 +65,4 @@ class LandingPage extends React.Component {
     }
 }
 
-export default LandingPage;
+export default MovieSearch;
