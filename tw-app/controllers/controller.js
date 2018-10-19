@@ -5,9 +5,8 @@ module.exports = {
     //movie methods, insert, update Blurb, select
     insertMovie: function(req,res) {
         db.Movie.create({
-            movie_Name: req.params.movie_Name,
-            api_id: req.params.api_id,
-            user_id: req.params.user_id
+            title: req.params.title,
+            imdbID: req.params.imdbID
         }).then(dbModel => res.json(dbModel))
         .catch(err => res.status(500).json(err));
     },
@@ -21,8 +20,8 @@ module.exports = {
     },
     findMovie: function(req,res) {
         db.Movie.findOne({
-            where: {movie_Name: req.params.movie_Name},
-            attributes: ['movie_Name', 'api_id']
+            where: {title: req.params.title},
+            attributes: ['title', 'imdbID']
         }).then(dbModel => res.json(dbModel))
         .catch(err => res.status(500).json(err));
     },
@@ -41,5 +40,14 @@ module.exports = {
             }
         }).then(dbModel => res.json(dbModel))
         .catch(err => res.status(500).json(err));
+    },
+    findBlurb: function(req, res) {
+        var imdbID = req.params.imdbID
+        db.sequelize
+            .query(
+                "select blurb from blurbs where id in (select distinct BlurbID from movies where imdbID = ?",
+                {replacements: [imdbID]}
+            ).then(dbModel => res.json(dbModel))
+            .catch(err => res.status(500).json(err));
     }
 }
