@@ -1,18 +1,19 @@
 import imdbAPI from "../../utils/imdbAPI";
 import React from "react";
+import { Link } from "react-router-dom";
 import InputBox from "../../components/InputBox";
 import Movie from "../../components/Movie";
 import Movies from "../../components/Movies";
 
-class LandingPage extends React.Component {
+class MovieSearch extends React.Component {
     state = {
         sq: "",
-        info: [{
+        info: {
             title: "",
             poster: "",
             imdbid: "",
             plot: ""
-        }]
+        }
     };
 
     handleChange = (e) => this.setState({ [e.target.name]: e.target.value });
@@ -22,11 +23,16 @@ class LandingPage extends React.Component {
 
         console.log(this.state.sq);
 
-        imdbAPI.searchMovie(this.state.sq).then(res => {
+        imdbAPI.getMovie(this.state.sq).then(res => {
             console.log("RES", res);
 
             this.setState({
-            info: res.results
+            info: {
+                title: res.title,
+                poster: res.poster,
+                imdbid: res.imdbid,
+                plot: res.plot
+            }
         }, () => console.log(this.state));
     });
     }
@@ -51,12 +57,12 @@ class LandingPage extends React.Component {
 
                     </div>
                 </div>
-                {/* <Movies> */}
+                <Movies>
                     <Movie />
-                {/* </Movies> */}
+                </Movies>
             </div>
         );
     }
 }
 
-export default LandingPage;
+export default MovieSearch;

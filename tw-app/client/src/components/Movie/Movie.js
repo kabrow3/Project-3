@@ -6,14 +6,10 @@ const Movie = props => (
     <div className="movie">
       <figure className="movie-figure">
       <Link to="/details/:id">
-        <img src=
-        // {`${props.poster}`} 
-        "https://m.media-amazon.com/images/M/MV5BMTYwNjAyODIyMF5BMl5BanBnXkFtZTYwNDMwMDk2._V1_SX300.jpg"
-        className="movie-poster" />
-        </Link>
+        <img src={`${props.poster}`}className="movie-poster" />
+      </Link>
         <h2 className="movie-title">
         {props.title}
-        Batman
         </h2>
       </figure>
     </div>

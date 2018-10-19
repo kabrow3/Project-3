@@ -39,11 +39,20 @@ class BlurbModal extends React.Component {
                 Select a Trigger
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Suicide</a>
                 <a class="dropdown-item" href="#">Domestic Violence</a>
+                <a class="dropdown-item" href="#">Eating Disorders</a>
+                <a class="dropdown-item" href="#">Flashing Lights/Strobe Effect</a>
+                <a class="dropdown-item" href="#">Graphic Sexual Content</a>
+                <a class="dropdown-item" href="#">Graphic Violence</a>
+                <a class="dropdown-item" href="#">Gunfire/Gun Violence</a>
+                <a class="dropdown-item" href="#">Mental Health Issues</a>
+                <a class="dropdown-item" href="#">Racism/Prejudice</a>
+                <a class="dropdown-item" href="#">Sexism</a>
                 <a class="dropdown-item" href="#">Sexual Assault</a>
+                <a class="dropdown-item" href="#">Suicide/Self-Harm</a>
+                <a class="dropdown-item" href="#">Warfare</a>
             </div>
-            </div>
+          </div>
           <form id="signIn" name="signIn" className="col-sm-12">
             <div className="">
               <InputBox type="text" name="blurb" label="Blurb" value={this.state.email} onChange={this.handleChange} />
