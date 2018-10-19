@@ -1,11 +1,18 @@
 import React from "react";
+import { Redirect, Link } from 'react-router-dom';
+import "./Movie.css"
 
 const Movie = props => (
     <div className="movie">
-      <figure className="movie--figure">
-        <img src={`${props.poster}`} className="movie--poster" />
-        <h2 className="movi--title">{props.title}</h2>
-        <p className="movie--summary">{props.plot}</p>
+      <figure className="movie-figure">
+      <Link to="/details/:id">
+        <img src=
+        {`${props.poster}`} 
+        className="movie-poster" />
+        </Link>
+        <h2 className="movie-title">
+        {props.title}
+        </h2>
       </figure>
     </div>
   );

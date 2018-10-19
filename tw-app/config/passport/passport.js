@@ -23,7 +23,7 @@ module.exports = function(passport, user) {
         })
           .then(user => {
             if (!user) {
-              return done(null, false, { message: "Username does not exist" });
+              return done(null, false, { message: "Email does not exist" });
             }
             if (!isValidPassword(user.password, password)) {
               return done(null, false, { message: "Incorrect Password" });
@@ -44,11 +44,11 @@ module.exports = function(passport, user) {
     "local-signup",
     new LocalStrategy(
       {
-        usernameField: "username",
+        usernameField: "email",
         passwordField: "password",
         passReqToCallback: true
       },
-      (req, username, password, done) => {
+      (req, email, password, done) => {
         const generateHash = pass => bCrypt.hashSync(pass, bCrypt.genSaltSync(8), null);
 
         User.findOne({
@@ -64,7 +64,7 @@ module.exports = function(passport, user) {
           const data = {
             email: req.body.email,
             password: userPassword,
-            username: username
+            username: req.body.username
           };
 
           User.create(data).then((newUser, created) => {
