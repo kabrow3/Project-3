@@ -1,5 +1,7 @@
 import axios from "axios";
 import React from "react";
+import { Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Modal from "react-responsive-modal";
 import InputBox from "../InputBox";
 
@@ -7,32 +9,68 @@ import InputBox from "../InputBox";
 class SignInModal extends React.Component {
   state = {
     email: '',
-    password: ''
+    password: '',
+    loggedIn: false,
+    showError: false,
+    showNullError: false
   };
 
-  handleChange = (e) => this.setState({ [e.target.name]: e.target.value });
+  handleChange = (e) => 
+  this.setState({ 
+    [e.target.name]: e.target.value 
+  });
 
-  handleClick = async (e) => {
+  handleClick = (e) => {
     e.preventDefault()
-
-    // axios.post('/api/auth', this.state)
-    //     .then(res => console.log(res.data))
-    //     .catch(err => console.log(err));
-
-    try {
-      const { data } = await axios.post('/api/auth/signin', this.state);
-
-      this.setState({ email: "", password: "" });
-
-
-      console.log(data);
-
-    } catch (err) {
-      console.log(err);
-    }
+    console.log(this.state.username);
+    console.log(this.state.password);
+    if (this.state.username === '' || this.state.password === '') {
+      this.setState({
+        showError: false,
+        showNullError: true,
+        loggedIn: false,
+      });
+    } else {
+    axios
+    .get('http://localhost:3001/loginUser', {
+      params: {
+        email: this.state.email,
+        password: this.state.password,
+      },
+    })
+    .then (response => {
+      if (
+        response.data === 'bad email' ||
+        response.data === 'passwords do not match'
+      ) {
+        this.setState({
+          showError: true,
+          showNullError: false,
+        });
+      } else {
+      localStorage.setItem('JWT', response.data.token);
+            this.setState({
+              loggedIn: true,
+              showError: false,
+              showENullrror: false
+            });
+            // console.log(response.data);
+          }
+    })
+    .catch(error => {
+      console.log(error.data);
+    });
+  }
   }
 
   render() {
+    const {
+      email,
+      showError,
+      loggedIn,
+      showNullError
+    } = this.state;
+    if (!loggedIn) {
     return (
       <Modal open={this.props.open} onClose={this.props.onCloseModal} center>
         <br />
@@ -48,10 +86,26 @@ class SignInModal extends React.Component {
           <br/>
             <button type='submit' className='col-sm-12 btn btn-primary' onClick={this.handleClick}>Login</button>
           </div>
+          {showNullError && (
+            <div>
+              <p>The username or password cannot be null.</p>
+            </div>
+          )}
+          {showError && (
+            <div>
+              <p>
+                That username or password isn't recognized. Please try again or
+                register now.
+              </p>
+            </div>
+          )}
         </form>
         <a href="/create-account"><p className="text-center">create account</p></a>
       </Modal>
     );
+    } else {
+      return <Redirect to={`/my-account/${email}`} />;
+    }
   }
 }
 

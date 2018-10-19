@@ -28,3 +28,5 @@ router.route("/blurb")
 // find all blurbs with attached to a movie
 router.route("/blurb/:imdbID")
     .get(controller.findBlurb);
+
+    module.exports = router;

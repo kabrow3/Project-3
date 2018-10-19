@@ -24,7 +24,7 @@ const App = () => (
         <Route exact path="/create-account" 
          component={CreateAcc} 
         />
-        <Route exact path="/my-account" 
+        <Route exact path="/my-account/:username" 
          component={UserPage} 
         />
         <Route 
