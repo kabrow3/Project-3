@@ -7,12 +7,12 @@ import Movies from "../../components/Movies";
 class LandingPage extends React.Component {
     state = {
         sq: "",
-        info: {
+        info: [{
             title: "",
             poster: "",
             imdbid: "",
             plot: ""
-        }
+        }]
     };
 
     handleChange = (e) => this.setState({ [e.target.name]: e.target.value });
@@ -22,16 +22,11 @@ class LandingPage extends React.Component {
 
         console.log(this.state.sq);
 
-        imdbAPI.getTV(this.state.sq).then(res => {
+        imdbAPI.searchMovie(this.state.sq).then(res => {
             console.log("RES", res);
 
             this.setState({
-            info: {
-                title: res.title,
-                poster: res.poster,
-                imdbid: res.imdbid,
-                plot: res.plot
-            }
+            info: res.results
         }, () => console.log(this.state));
     });
     }

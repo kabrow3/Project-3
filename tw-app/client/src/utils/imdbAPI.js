@@ -15,6 +15,7 @@ export default {
   },
   // Returns all movie and tv results for the search term
   searchMovie: function(sq) {
+    console.log(sq);
     return imdb.search({name: sq}, {apiKey: '8ff70e2d'});
   },
   // Returns the top tv result for the given title, as well as all the episodes

@@ -6,10 +6,8 @@ const Movie = props => (
     <div className="movie">
       <figure className="movie-figure">
       <Link to="/details/:id">
-        <img src=
-        {`${props.poster}`} 
-        className="movie-poster" />
-        </Link>
+        <img src={`${props.poster}`}className="movie-poster" />
+      </Link>
         <h2 className="movie-title">
         {props.title}
         </h2>
