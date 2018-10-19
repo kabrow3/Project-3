@@ -11,23 +11,22 @@ class CreateAcc extends React.Component {
 
     handleChange = (e) => this.setState({ [e.target.name]: e.target.value });
 
-    handleClick = async (e) => {
+    handleClick = (e) => {
         e.preventDefault()
-
-        // axios.post('/api/auth', this.state)
-        //     .then(res => console.log(res.data))
-        //     .catch(err => console.log(err));
-
-        try {
-            const { data } = await axios.post('/api/auth/signup', this.state);
-
-            console.log(data);
-
-            this.setState({ email: "", password: "", username: "" });
-
-        } catch (err) {
-            console.log(err);
-        }
+        console.log(this.state)
+        axios
+        .post('http://localhost:3001/registerUser', {
+          email: this.state.email,
+          password: this.state.password,
+          username: this.state.username
+        })
+        .then(response => {
+          console.log('Response:');
+          console.log(response.data);
+        })
+        .catch(error => {
+          console.log(error.data);
+        });
     }
 
     render () {
@@ -41,10 +40,10 @@ class CreateAcc extends React.Component {
                         <span className="card-title"><h3>Create Account</h3></span>
                         
                         <form className="container">
-                            <InputBox type="text" name="username" label="Username" value={this.state.username} onChange={this.handleChange}/>
-                            <InputBox type="email" name="email" label="Email" value={this.state.email} onChange={this.handleChange}/>
-                            <InputBox type="password" name="password" label="Password" value={this.state.password} onChange={this.handleChange}/>
-                            <button type="submit" className="btn btn-primary" onClick={this.handleClick}>Submit</button>
+                                <InputBox type="text" name="username" label="Username" value={this.state.username} onChange={this.handleChange}/>
+                                <InputBox type="email" name="email" label="Email" value={this.state.email} onChange={this.handleChange}/>
+                                <InputBox type="password" name="password" label="Password" value={this.state.password} onChange={this.handleChange}/>
+                                <button type="submit" className="btn btn-primary" onClick={this.handleClick}>Submit</button>
                         </form>
 
                         </div> 

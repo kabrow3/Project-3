@@ -6,6 +6,7 @@ const session = require('express-session');
 const passport = require('passport');
 const db = require("./models");
 const routes = require("./routes");
+const cors = require('cors');
 
 const PORT = process.env.PORT || 3001;
 
@@ -19,12 +20,16 @@ app.use(bodyParser.json());
 app.use(express.static("client/build"));
 
 // Passport
+require("./config/passport/passport")
+app.use(cors());
+
 app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 
 // Add routes
-app.use(routes);
+// app.use(routes);
+require('./routes/registerUser')(app);
 
 if (process.env.NODE_ENV === 'production') {
   app.get('*', (req, res) => res.sendFile(path.join(__dirname, 'client/build/index.html')));
