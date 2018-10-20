@@ -29,4 +29,4 @@ router.route("/blurb")
 router.route("/blurb/:imdbID")
     .get(controller.findBlurb);
 
-    module.exports = router;
+module.exports = router;

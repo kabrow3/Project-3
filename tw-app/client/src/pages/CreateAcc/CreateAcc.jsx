@@ -27,7 +27,7 @@ class CreateAcc extends React.Component {
             });
         } else {
             axios
-                .post('http://localhost:3001/registerUser', {
+                .post('/registerUser', {
                     email: this.state.email,
                     password: this.state.password,
                     username: this.state.username

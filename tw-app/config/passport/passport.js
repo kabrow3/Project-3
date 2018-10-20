@@ -1,18 +1,16 @@
 const bcrypt = require("bcrypt");
+const db = require('../../models');
+const ExtractJWT = require('passport-jwt').ExtractJwt;
 const jwtSecret = require("./jwtConfig");
+const JWTstrategy = require('passport-jwt').Strategy
+const localStrategy = require('passport-local').Strategy;
+const passport = require('passport');
 
 const BCRYPT_SALT_ROUNDS = 12;
 
-const passport = require('passport'),
-  localStrategy = require('passport-local').Strategy,
-  db = require('../../models'),
-  JWTstrategy = require('passport-jwt').Strategy,
-  ExtractJWT = require('passport-jwt').ExtractJwt;
-
 passport.use(
   'register',
-  new localStrategy(
-    {
+  new localStrategy({
       usernameField: 'email',
       passwordField: 'password',
       session: false,
@@ -27,10 +25,16 @@ passport.use(
         }).then(user => {
           if (user != null) {
             console.log('email is already taken');
-            return done(null, false, { message: 'email already taken' });
+            return done(null, false, {
+              message: 'email already taken'
+            });
           } else {
             bcrypt.hash(password, BCRYPT_SALT_ROUNDS).then(hashedPassword => {
-              db.User.create({ email: email, username: req.body.username, password: hashedPassword }).then(user => {
+              db.User.create({
+                email: email,
+                username: req.body.username,
+                password: hashedPassword
+              }).then(user => {
                 console.log('user created');
                 return done(null, user);
               });
@@ -46,8 +50,7 @@ passport.use(
 
 passport.use(
   'login',
-  new localStrategy(
-    {
+  new localStrategy({
       usernameField: 'email',
       passwordField: 'password',
       session: false,
@@ -60,12 +63,16 @@ passport.use(
           },
         }).then(user => {
           if (user === null) {
-            return done(null, false, { message: 'bad email' });
+            return done(null, false, {
+              message: 'bad email'
+            });
           } else {
             bcrypt.compare(password, user.password).then(response => {
               if (response !== true) {
                 console.log('passwords do not match');
-                return done(null, false, { message: 'passwords do not match' });
+                return done(null, false, {
+                  message: 'passwords do not match'
+                });
               }
               console.log('user found & authenticated');
               return done(null, user);

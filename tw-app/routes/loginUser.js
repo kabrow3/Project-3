@@ -32,4 +32,20 @@ module.exports = app => {
       }
     })(req, res, next);
   });
+
+  app.post('/verifyUser', (req, res, next) => {
+    jwt.verify(req.body.token, jwtSecret.secret, function (err, token) {
+      if (err) {
+        res.json({ message: "User not authenticated", user: null });
+      } else {
+        db.User.findOne({
+          where: {
+            email: token.id
+          }
+        }).then(user => {
+          res.json({ message: "User authenticated", user: user });
+        })
+      }
+    });
+  });
 };

@@ -32,7 +32,7 @@ class SignInModal extends React.Component {
       });
     } else {
     axios
-    .get('http://localhost:3001/loginUser', {
+    .get('/loginUser', {
       params: {
         email: this.state.email,
         password: this.state.password,
@@ -70,7 +70,7 @@ class SignInModal extends React.Component {
       loggedIn,
       showNullError
     } = this.state;
-    if (!loggedIn) {
+    if (!this.props.user) {
     return (
       <Modal open={this.props.open} onClose={this.props.onCloseModal} center>
         <br />
@@ -104,7 +104,7 @@ class SignInModal extends React.Component {
       </Modal>
     );
     } else {
-      return <Redirect to={`/my-account/${email}`} />;
+      return <Redirect to={`/my-account`} />;
     }
   }
 }

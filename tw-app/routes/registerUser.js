@@ -4,8 +4,6 @@ const passport = require('passport');
 module.exports = app => {
   app.post('/registerUser', (req, res, next) => {
     passport.authenticate('register', (err, user, info) => {
-      console.log(req.body);
-
       if (err) {
         console.log(err);
       }

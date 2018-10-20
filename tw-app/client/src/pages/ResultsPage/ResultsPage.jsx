@@ -24,7 +24,7 @@ class LandingPage extends React.Component {
             console.log("RES", res);
 
             this.setState({
-                results: res.results
+                info: res.results
             }, () => console.log(this.state));
         });
     }
@@ -49,9 +49,9 @@ class LandingPage extends React.Component {
 
                     </div>
                 </div>
-                {/* <Movies> */}
+                <Movies>
                     <Movie />
-                {/* </Movies> */}
+                </Movies>
             </div>
         );
     }
