@@ -1,18 +1,16 @@
 import imdbAPI from "../../utils/imdbAPI";
 import React from "react";
+import { Link } from "react-router-dom";
 import InputBox from "../../components/InputBox";
 import Movie from "../../components/Movie";
 import Movies from "../../components/Movies";
 
 class LandingPage extends React.Component {
     state = {
-        sq: "",
-        info: [{
-            title: "",
-            poster: "",
-            imdbid: "",
-            plot: ""
-        }]
+        sq: "",//search query entered by user
+        results: [],//array of results returned from api
+        // previousSearch: {},//previous search term saved after search completed
+        // noResults: false,//boolean used as flag for conditional rendering
     };
 
     handleChange = (e) => this.setState({ [e.target.name]: e.target.value });
@@ -26,9 +24,9 @@ class LandingPage extends React.Component {
             console.log("RES", res);
 
             this.setState({
-            info: res.results
-        }, () => console.log(this.state));
-    });
+                results: res.results
+            }, () => console.log(this.state));
+        });
     }
 
     render () {
@@ -51,9 +49,9 @@ class LandingPage extends React.Component {
 
                     </div>
                 </div>
-                {/* <Movies> */}
+                <Movies>
                     <Movie />
-                {/* </Movies> */}
+                </Movies>
             </div>
         );
     }
