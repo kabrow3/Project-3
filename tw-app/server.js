@@ -31,6 +31,7 @@ app.use(passport.session());
 // app.use(routes);
 require('./routes/registerUser')(app);
 require('./routes/loginUser')(app);
+require('./routes/findUsers')(app);
 
 if (process.env.NODE_ENV === 'production') {
   app.get('*', (req, res) => res.sendFile(path.join(__dirname, 'client/build/index.html')));

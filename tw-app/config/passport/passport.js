@@ -90,7 +90,8 @@ passport.use(
     try {
       db.User.findOne({
         where: {
-          username: jwt_payload.id,
+          // change to username
+          email: jwt_payload.id,
         },
       }).then(user => {
         if (user) {
