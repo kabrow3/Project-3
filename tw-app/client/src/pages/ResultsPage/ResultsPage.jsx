@@ -5,15 +5,12 @@ import InputBox from "../../components/InputBox";
 import Movie from "../../components/Movie";
 import Movies from "../../components/Movies";
 
-class MovieSearch extends React.Component {
+class LandingPage extends React.Component {
     state = {
-        sq: "",
-        info: {
-            title: "",
-            poster: "",
-            imdbid: "",
-            plot: ""
-        }
+        sq: "",//search query entered by user
+        results: [],//array of results returned from api
+        // previousSearch: {},//previous search term saved after search completed
+        // noResults: false,//boolean used as flag for conditional rendering
     };
 
     handleChange = (e) => this.setState({ [e.target.name]: e.target.value });
@@ -23,18 +20,13 @@ class MovieSearch extends React.Component {
 
         console.log(this.state.sq);
 
-        imdbAPI.getMovie(this.state.sq).then(res => {
+        imdbAPI.searchMovie(this.state.sq).then(res => {
             console.log("RES", res);
 
             this.setState({
-            info: {
-                title: res.title,
-                poster: res.poster,
-                imdbid: res.imdbid,
-                plot: res.plot
-            }
-        }, () => console.log(this.state));
-    });
+                info: res.results
+            }, () => console.log(this.state));
+        });
     }
 
     render () {
@@ -65,4 +57,4 @@ class MovieSearch extends React.Component {
     }
 }
 
-export default MovieSearch;
+export default LandingPage;
