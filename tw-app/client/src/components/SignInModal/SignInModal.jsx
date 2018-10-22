@@ -55,6 +55,7 @@ class SignInModal extends React.Component {
               showENullrror: false
             });
             console.log(response.data);
+            window.location = "/my-account"
           }
     })
     .catch(error => {
