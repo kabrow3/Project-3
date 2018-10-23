@@ -5,13 +5,13 @@ const controller = require("../../controllers/controller");
 // how do we want to name them?
 
 // post route for inserting into our movie database
-router.route("/movie/:title/:imdbID")
+router.route("/movie/:title/:imdbID/:BlurbID")
     .post(controller.insertMovie);
 
 // put route for updating the blurb on the movie table
 
-router.route("/movie/:BlurbId")
-    .put(controller.updateMovieBlurb);
+// router.route("/movie/:BlurbId")
+//     .put(controller.updateMovieBlurb);
 
 // get route for seraching for a movie in our database by title
 router.route("/movie/:title")
