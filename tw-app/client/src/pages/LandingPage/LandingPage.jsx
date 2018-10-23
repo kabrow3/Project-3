@@ -68,7 +68,7 @@ class LandingPage extends React.Component {
                       this.state.results.map((movie, i) => (
                           <Movies
                             key={i}
-                            id={movie.imdbid}
+                            imdbid={movie.imdbid}
                             title={movie.title}
                             poster={movie.poster}
                             year={movie.year}
