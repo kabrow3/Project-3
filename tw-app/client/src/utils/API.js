@@ -1,20 +1,25 @@
 import axios from "axios";
 
 export default {
-  // Gets all movies
-  getMovies: function() {
-    return axios.get("/api/movies");
+  // insert movie with imdbID and BlurbID
+  insertMovie: function(title, imdbID, BlurbID) {
+    return axios.post("/api/route/movie/" + title + "/" + imdbID + "/" + BlurbID);
   },
-  // Gets the movie with the given id
-  getMovie: function(id) {
-    return axios.get("/api/movies/" + id);
+  // find movies with title in db
+  findMovie: function(title) {
+    return axios.get("/api/route/movie/" + title);
   },
-  // Deletes the movie with the given id
-  deleteMovie: function(id) {
-    return axios.delete("/api/movies/" + id);
+  // post anew blurb
+  insertBlurb: function(blurb) {
+    return axios.post("/api/route/blurb", blurb);
   },
-  // Saves a movie to the database
-  saveMovie: function(movieData) {
-    return axios.post("/api/movies", movieData);
+  // update a blurb in the db
+  updateBlurb: function(blurb) {
+    return axios.put("/api/movies", blurb);
+  },
+  // find blurbs attached to movies
+  findBlurb: function(imdbID) {
+    return axios.get("api/blurb/" + imdbID)
+    ;
   }
 };
