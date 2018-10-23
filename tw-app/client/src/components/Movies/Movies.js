@@ -1,7 +1,7 @@
 import React from "react";
 import { Redirect, Link } from 'react-router-dom';
 import "./Movies.css";
-import { H2, H3, H4 } from '../Headings'
+import { H4, H5 } from '../Headings'
 
 const Movies = props => (
   
@@ -11,12 +11,12 @@ const Movies = props => (
         className="movie-poster" 
         onClick={() => props.handleClick(props.imdbid)}>
         </img>
-        <H2 className="movie-title">
+        <H4 className="movie-title">
         {props.title}
-        </H2>
-        <H4 className="movie-year">
-        {props.year}
         </H4>
+        <H5 className="movie-year">
+        {props.year}
+        </H5>
       </figure>
     </div>
 

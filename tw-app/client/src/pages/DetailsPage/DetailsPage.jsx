@@ -1,5 +1,6 @@
 import React from "react";
 import BlurbModal from "../../components/BlurbModal";
+// import Movie from "../../components/Movie";
 
 class DetailsPage extends React.Component {
     state = {
