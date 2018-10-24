@@ -2,8 +2,8 @@ import axios from "axios";
 
 export default {
   // insert movie with imdbID and BlurbID
-  insertMovie: function(title, imdbID, BlurbID) {
-    return axios.post("/api/route/movie/" + title + "/" + imdbID + "/" + BlurbID);
+  insertMovie: function(title, imdbID) {
+    return axios.post("/api/route/movie/" + title + "/" + imdbID);
   },
   // find movies with title in db
   findMovie: function(title) {

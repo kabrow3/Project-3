@@ -5,7 +5,7 @@ const controller = require("../../controllers/controller");
 // how do we want to name them?
 
 // post route for inserting into our movie database
-router.route("/movie/:title/:imdbID/:BlurbID")
+router.route("/movie/:title/:imdbID")
     .post(controller.insertMovie);
 
 // put route for updating the blurb on the movie table
