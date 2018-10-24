@@ -12,8 +12,8 @@ module.exports = {
 
         db.sequelize
             .query(
-                "insert into movies (title, imdbID, BlurbID) values (?, ?, ?)",
-                {replacements: [title, imdbID, BlurbID]}
+                "insert into movies (title, imdbID) values (?, ?)",
+                {replacements: [title, imdbID]}
             ).then(dbModel => res.json(dbModel))
         .catch(err => res.status(500).json(err));
     },

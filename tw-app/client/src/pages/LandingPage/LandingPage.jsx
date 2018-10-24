@@ -7,6 +7,7 @@ import Movies from "../../components/Movies";
 import { Container, Row, Col } from "../../components/Grid";
 import { H1, H3, H4 } from '../../components/Headings';
 import { Panel, PanelBody, PanelHeading } from '../../components/Panel';
+import API from "../../utils/API";
 
 class LandingPage extends React.Component {
     state = {
@@ -38,7 +39,7 @@ class LandingPage extends React.Component {
         </Link>
         imdbAPI.getMoviebyID(id).then(res=> {
             console.log("Det Res", res);
-
+            API.insertMovie(res.title, id).catch(e => console.log(e.response.data));
         })
     }
 
