@@ -1,9 +1,9 @@
-const Sequelize = require('sequelize');
-
 module.exports = function(sequelize, DataTypes) {
     var User = sequelize.define("User", {
       username: {
         type: DataTypes.STRING(15),
+        // maybe remove
+        // unique: true,
         validation: {
           len: [2, 15],
           isAlphanumeric: true
@@ -11,6 +11,8 @@ module.exports = function(sequelize, DataTypes) {
       },
       email: {
         type: DataTypes.STRING,
+        // maybe remove
+        // unique: true,
         validation: {
           isEmail: true
         }
