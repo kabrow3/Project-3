@@ -2,8 +2,11 @@ import imdbAPI from "../../utils/imdbAPI";
 import React from "react";
 import { Link } from "react-router-dom";
 import InputBox from "../../components/InputBox";
-import Movie from "../../components/Movie";
+// import Movie from "../../components/Movie";
 import Movies from "../../components/Movies";
+import { Container, Row, Col } from "../../components/Grid";
+import { H1, H3, H4 } from '../../components/Headings';
+import { Panel, PanelBody, PanelHeading } from '../../components/Panel';
 
 class LandingPage extends React.Component {
     state = {
@@ -15,7 +18,7 @@ class LandingPage extends React.Component {
 
     handleChange = (e) => this.setState({ [e.target.name]: e.target.value });
 
-    handleClick = async (e) => {
+    handleSubmit= async (e) => {
         e.preventDefault()
 
         console.log(this.state.sq);
@@ -27,6 +30,16 @@ class LandingPage extends React.Component {
                 results: res.results
             }, () => console.log(this.state));
         });
+    }
+
+    handleClick = id => {
+        var dPage = "/details:/" + id;
+        <Link to={dPage}>
+        </Link>
+        imdbAPI.getMoviebyID(id).then(res=> {
+            console.log("Det Res", res);
+
+        })
     }
 
     render () {
@@ -41,7 +54,7 @@ class LandingPage extends React.Component {
                         
                         <form className="container">
                             <InputBox type="text" name="sq" label="Search" value={this.state.sq} onChange={this.handleChange}/>
-                            <button type="submit" className="btn btn-primary" onClick={this.handleClick}>Submit</button>
+                            <button type="submit" className="btn btn-primary" onClick={this.handleSubmit}>Submit</button>
                         </form>
 
                         </div> 
@@ -49,9 +62,23 @@ class LandingPage extends React.Component {
 
                     </div>
                 </div>
-                {/* <Movies> */}
-                    <Movie />
-                {/* </Movies> */}
+                <Panel>
+                  <PanelBody>
+                    {
+                      this.state.results.map((movie, i) => (
+                          <Movies
+                            key={i}
+                            imdbid={movie.imdbid}
+                            title={movie.title}
+                            poster={movie.poster}
+                            year={movie.year}
+                            handleClick={this.handleClick}
+                          />
+                        )
+                      )
+                    }
+                  </PanelBody>
+                </Panel>
             </div>
         );
     }

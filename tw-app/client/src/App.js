@@ -14,16 +14,24 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    const token = localStorage.getItem('JWT');
-    console.log(token);
+    const token = localStorage.getItem('token');
 
-    axios.post('/verifyUser', {token: token}).then(res => {
-      this.setState({ user: res.data.user });
-    }).catch(console.error);
-  }
+    axios
+        .get('/auth/verify', { headers: { Authorization: `bearer ${token}` } })
+        .then((response) => {
+            const data = response.data;
+            this.setState({ user: data });
+        })
+        .catch((err) => {
+            console.log(err.response.data);
+            console.log('User not authenticated');
+        });
+}
 
-  LandingPage = props => <LandingPage user={this.state.user} {...props} />;
-  UserPage = props => <UserPage user={this.state.user} {...props} />;
+CreateAcc = (props) => <CreateAcc user={this.state.user} {...props} />;
+DetailsPage = (props) => <DetailsPage user={this.state.user} {...props} />;
+LandingPage = (props) => <LandingPage user={this.state.user} {...props} />;
+UserPage = (props) => <UserPage user={this.state.user} {...props} />;
 
   render () {
     return (

@@ -2,12 +2,13 @@
 const path = require('path');
 const bodyParser = require('body-parser');
 const express = require("express");
-const passport = require('passport');
 const db = require("./models");
 const routes = require("./routes");
 const Cors = require('cors');
 
 const PORT = process.env.PORT || 3001;
+process.env.JWT_SECRET = "jwt-secret";
+process.env.BCRYPT_SALT_ROUNDS = 12;
 
 const app = express();
 
@@ -15,21 +16,13 @@ const app = express();
 
 // // Passport
 // Serve up static assets
-require("./config/passport/passport")
-
 // app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
 app.use(bodyParser.urlencoded({ extended:true }));
 app.use(bodyParser.json());
 app.use(Cors());
-app.use(passport.initialize());
-app.use(passport.session());
 
 // Add routes
-// app.use(routes);
-require('./routes/registerUser')(app);
-require('./routes/loginUser')(app);
-require('./routes/findUsers')(app);
-
+app.use(routes);
 app.use(express.static("client/build"));
 
 if (process.env.NODE_ENV === 'production') {
