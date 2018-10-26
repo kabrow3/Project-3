@@ -2,6 +2,7 @@ import React from "react";
 import BlurbModal from "../../components/BlurbModal";
 import Movie from "../../components/Movie";
 import imdbAPI from "../../utils/imdbAPI";
+import './DetailsPage.css';
 
 class DetailsPage extends React.Component {
     state = {
@@ -30,29 +31,43 @@ class DetailsPage extends React.Component {
     render() {
         return (
             <div className="container">
-                <div className="row mt-3">
-                    <div className="movie-info">
-                        <Movie
-                            poster={this.state.results.poster}
-                            title={this.state.results.title}
-                            year={this.state.results.year}
-                            rated={this.state.results.rated}
-                            runtime={this.state.results.runtime}
-                            genre={this.state.results.genre}
-                            director={this.state.results.director}
-                            writer={this.state.results.writer}
-                            actors={this.state.results.actors}
-                            plot={this.state.results.plot}
-                        />
-                    </div>
-
-                </div>
                 <div className="row">
-                    <div className="col-md-2 d-flex justify-content-center">
-                        <button onClick={this.onOpenModal} className="btn btn-primary">Add Feed Back</button>
-                        <BlurbModal open={this.state.open} onCloseModal={this.onCloseModal} />
+                    <div className="col-md-6">
+                        <div className="row">
+                            <div className="movie-poster">
+                                <img src={this.state.results.poster}></img>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="blurb-modal">
+                                <button onClick={this.onOpenModal} className="btn btn-primary">Add Feed Back</button>
+                                <BlurbModal open={this.state.open} onCloseModal={this.onCloseModal} />
+                            </div>
+                        </div>
                     </div>
+                    <div className="col-md-6">
+                        <div className="movie-info">
+                            <Movie
+                                title={this.state.results.title}
+                                year={this.state.results.year}
+                                rated={this.state.results.rated}
+                                runtime={this.state.results.runtime}
+                                genre={this.state.results.genre}
+                                director={this.state.results.director}
+                                writer={this.state.results.writer}
+                                actors={this.state.results.actors}
+                                plot={this.state.results.plot}
+                            /> 
+                        </div>
+                    </div>
+                    
+                    {/* <div className="col-md-2">
+                       
+                    </div> */}
                 </div>
+                {/* <div className="row">
+                   
+                </div> */}
                 <div className="row">
                     <div className="col-md-12">
                         <h4>Known Triggers</h4>
