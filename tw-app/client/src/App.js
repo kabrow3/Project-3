@@ -42,7 +42,7 @@ UserPage = (props) => <UserPage user={this.state.user} {...props} />;
             <Route exact path="/" 
             component={this.LandingPage} 
             />
-            <Route exact path="/details/:id" 
+            <Route exact path="/details/:imdbid" 
             component={DetailsPage} 
             />
             <Route exact path="/dummy/:id" 

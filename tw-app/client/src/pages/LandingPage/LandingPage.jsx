@@ -1,6 +1,7 @@
 import imdbAPI from "../../utils/imdbAPI";
 import React from "react";
 import { Link } from "react-router-dom";
+import { withRouter } from 'react-router-dom';
 import InputBox from "../../components/InputBox";
 // import Movie from "../../components/Movie";
 import Movies from "../../components/Movies";
@@ -12,6 +13,7 @@ import API from "../../utils/API";
 class LandingPage extends React.Component {
     state = {
         sq: "",//search query entered by user
+        imdbid: "",
         results: [],//array of results returned from api
         // previousSearch: {},//previous search term saved after search completed
         // noResults: false,//boolean used as flag for conditional rendering
@@ -25,23 +27,19 @@ class LandingPage extends React.Component {
         console.log(this.state.sq);
 
         imdbAPI.searchMovie(this.state.sq).then(res => {
-            console.log("RES", res);
+            // console.log("RES", res);
 
             this.setState({
+                imdbid: res.results.imdbid,
                 results: res.results
             }, () => console.log(this.state));
         });
+
+        imdbAPI.getMovie(this.state.sq).then(res=> {
+            console.log("DET", res);
+        });
     }
 
-    handleClick = id => {
-        var dPage = "/details:/" + id;
-        <Link to={dPage}>
-        </Link>
-        imdbAPI.getMoviebyID(id).then(res=> {
-            console.log("Det Res", res);
-            API.insertMovie(res.title, id).catch(e => console.log(e.response.data));
-        })
-    }
 
     render () {
         return (
@@ -73,7 +71,6 @@ class LandingPage extends React.Component {
                             title={movie.title}
                             poster={movie.poster}
                             year={movie.year}
-                            handleClick={this.handleClick}
                           />
                         )
                       )
