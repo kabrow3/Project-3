@@ -10,7 +10,7 @@ class DetailsPage extends React.Component {
     };
 
     componentDidMount() {
-        imdbAPI.getMoviebyID(this.props.match.params.imdbid).then(res=> {
+        imdbAPI.getMoviebyID(this.props.match.params.imdbid).then(res => {
             console.log("Det Res", res);
             this.setState({
                 results: res
@@ -30,15 +30,9 @@ class DetailsPage extends React.Component {
     render() {
         return (
             <div className="container">
-                 <div className="row">
-                   <div className="col-md-2">
-                       <button onClick={this.onOpenModal} className="btn btn-primary">Add Feed Back</button>
-                        <BlurbModal open={this.state.open} onCloseModal={this.onCloseModal} />
-                     </div>
-                     </div>
-                     <div className="row">
-                     <div className="movie-info">
-                         <Movie
+                <div className="row mt-3">
+                    <div className="movie-info">
+                        <Movie
                             poster={this.state.results.poster}
                             title={this.state.results.title}
                             year={this.state.results.year}
@@ -47,18 +41,24 @@ class DetailsPage extends React.Component {
                             genre={this.state.results.genre}
                             director={this.state.results.director}
                             writer={this.state.results.writer}
-                            cast={this.state.results.cast}
+                            actors={this.state.results.actors}
                             plot={this.state.results.plot}
-                          /> 
-                     </div>
-                   
-                 </div>
-                <div className="row">
-                <div className="col-md-12">
-                <h4>Known Triggers</h4>
-                    {/* blurb component */}
-                    {/* <Blurb /> */}
+                        />
+                    </div>
+
                 </div>
+                <div className="row">
+                    <div className="col-md-2 d-flex justify-content-center">
+                        <button onClick={this.onOpenModal} className="btn btn-primary">Add Feed Back</button>
+                        <BlurbModal open={this.state.open} onCloseModal={this.onCloseModal} />
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-md-12">
+                        <h4>Known Triggers</h4>
+                        {/* blurb component */}
+                        {/* <Blurb /> */}
+                    </div>
                 </div>
             </div>
         )
