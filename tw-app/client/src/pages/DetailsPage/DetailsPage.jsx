@@ -11,7 +11,7 @@ class DetailsPage extends React.Component {
     };
 
     componentDidMount() {
-        imdbAPI.getMoviebyID(this.props.match.params.imdbid).then(res=> {
+        imdbAPI.getMoviebyID(this.props.match.params.imdbid).then(res => {
             console.log("Det Res", res);
             this.setState({
                 results: res
