@@ -15,7 +15,7 @@ const App = () => (
         <Route exact path="/" 
         component={LandingPage} 
         />
-        <Route exact path="/details/:id" 
+        <Route exact path="/details/:imdbid" 
         component={DetailsPage} 
         />
         <Route exact path="/dummy/:id" 
