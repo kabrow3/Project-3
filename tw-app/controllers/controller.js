@@ -61,5 +61,11 @@ module.exports = {
                 {replacements: [imdbID]}
             ).then(dbModel => res.json(dbModel))
             .catch(err => res.status(500).json(err));
+    },
+
+    findAllTriggers: function(req,res) {
+        db.Trigger.findAll({})
+        .then(dbModel => res.json(dbModel))
+        .catch(err => res.status(500).json(err));
     }
 }

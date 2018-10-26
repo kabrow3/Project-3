@@ -21,5 +21,9 @@ export default {
   findBlurb: function(imdbID) {
     return axios.get("api/blurb/" + imdbID)
     ;
-  }
+  },
+  // find all triggers in db
+  findAllTriggers: function() {
+    return axios.get("/api/route/triggers/");
+  },
 };
