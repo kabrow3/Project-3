@@ -31,7 +31,7 @@ if (process.env.NODE_ENV === 'production') {
 // NODE_ENV=production node server.js
 
 
-var syncOptions = { force: true };
+var syncOptions = { force: false };
 // If running a test, set syncOptions.force to true
 // clearing the `testdb`
 if (process.env.NODE_ENV === "test") {

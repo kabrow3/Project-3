@@ -1,0 +1,9 @@
+To run the seeders, run this command in project folder:
+    // You may need to install mysql2 globally with:
+    // npm install -g mysql2
+
+            sequelize db:seed:all
+
+To undo the seeders (clear all data from tables):  
+ 
+            sequelize db:seed:undo:all
