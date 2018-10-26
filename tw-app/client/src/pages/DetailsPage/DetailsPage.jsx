@@ -17,17 +17,17 @@ class DetailsPage extends React.Component {
             }, () => console.log(this.state));
         });
     };
-    
+
     onOpenModal = () => {
-    this.setState({ open: true });
+        this.setState({ open: true });
     };
 
     onCloseModal = () => {
-    this.setState({ open: false });
+        this.setState({ open: false });
     };
 
 
-    render () {
+    render() {
         return (
             <div className="container">
                  <div className="row">
@@ -52,7 +52,14 @@ class DetailsPage extends React.Component {
                           /> 
                      </div>
                    
-                 </div> 
+                 </div>
+                <div className="row">
+                <div className="col-md-12">
+                <h4>Known Triggers</h4>
+                    {/* blurb component */}
+                    {/* <Blurb /> */}
+                </div>
+                </div>
             </div>
         )
     }
