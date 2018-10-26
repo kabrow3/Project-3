@@ -19,7 +19,9 @@ class BlurbModal extends React.Component {
         })
         .then(data => {
           let triggersFromApi = data.map(trigger => { return {value: trigger, display: trigger} })
+          console.log(triggersFromApi);
           this.setState({ triggers: [{value: '', display: '(Select your trigger)'}].concat(triggersFromApi) });
+          console.log(this.state.triggers);
         }).catch(error => {
           console.log(error);
         });
