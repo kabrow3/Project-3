@@ -46,7 +46,12 @@ class BlurbModal extends React.Component {
     e.preventDefault()
     console.log(this.state.blurb)
 
-    API.insertBlurb(this.state.blurb)
+    API.insertBlurb({
+      blurb : this.state.blurb,
+      id: this.props.id,
+      imdbid: this.props.imdbid,
+      title: this.props.title
+    })
     .then(res => {
       console.log(`I'm the response ${res}`);
       // this.setState({

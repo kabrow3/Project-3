@@ -5,8 +5,8 @@ module.exports = function(sequelize, DataTypes) {
   
     Blurb.associate = function(models) {
       Blurb.belongsTo(models.User);
-      Blurb.hasMany(models.Movie);
-      Blurb.hasMany(models.Trigger);
+      Blurb.belongsTo(models.Movie);
+      Blurb.belongsTo(models.Trigger);
     };
   
     return Blurb;

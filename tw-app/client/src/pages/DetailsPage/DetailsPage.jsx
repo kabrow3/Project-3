@@ -2,14 +2,15 @@ import React from "react";
 import BlurbModal from "../../components/BlurbModal";
 import Movie from "../../components/Movie";
 import imdbAPI from "../../utils/imdbAPI";
-import './DetailsPage.css';
 import API from "../../utils/API";
+import './DetailsPage.css';
 import Blurb from "../../components/Blurb"
 
 class DetailsPage extends React.Component {
     state = {
         open: false,
-        results: []
+        results: [],
+        blurbs:[]
     };
 
     componentDidMount() {
@@ -19,6 +20,13 @@ class DetailsPage extends React.Component {
                 results: res
             }, () => console.log(this.state));
         });
+        API.findBlurb(this.props.match.params.imdbid).then(res=> {
+            console.log("DB res", res);
+            this.setState({
+                blurbs: res
+            }, () => console.log(this.state));
+        });
+
     };
 
     onOpenModal = () => {
@@ -47,7 +55,11 @@ class DetailsPage extends React.Component {
                         <div className="row">
                             <div className="blurb-modal">
                                 <button onClick={this.onOpenModal} className="btn btn-primary">Add Feed Back</button>
-                                <BlurbModal open={this.state.open} onCloseModal={this.onCloseModal} />
+                                <BlurbModal 
+                                id={this.state.id}
+                                title={this.state.results.title}
+                                imdbid={this.state.results.imdbid}
+                                open={this.state.open} onCloseModal={this.onCloseModal} />
                             </div>
                         </div>
                     </div>
