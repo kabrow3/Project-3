@@ -3,6 +3,8 @@ import BlurbModal from "../../components/BlurbModal";
 import Movie from "../../components/Movie";
 import imdbAPI from "../../utils/imdbAPI";
 import './DetailsPage.css';
+import API from "../../utils/API";
+import Blurb from "../../components/Blurb"
 
 class DetailsPage extends React.Component {
     state = {
@@ -21,6 +23,10 @@ class DetailsPage extends React.Component {
 
     onOpenModal = () => {
         this.setState({ open: true });
+        API.insertMovie(this.state.results.title, this.state.results.imdbid).then(res=> {
+            console.log(res);
+        })
+
     };
 
     onCloseModal = () => {
@@ -72,7 +78,7 @@ class DetailsPage extends React.Component {
                     <div className="col-md-12">
                         <h4>Known Triggers</h4>
                         {/* blurb component */}
-                        {/* <Blurb /> */}
+                        <Blurb />
                     </div>
                 </div>
             </div>

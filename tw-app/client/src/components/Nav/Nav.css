@@ -1,3 +1,8 @@
+.px-6 {
+  padding-left: 5rem !important;
+  padding-right: 5rem !important;
+}
+
 .navbar--dark {
   /* background-color: #563d7c; */
 }

@@ -36,10 +36,9 @@ module.exports = {
     // blurb methods, create blurb, update blurb
     //route works in postman
     insertBlurb: function(req,res) {
-        db.Blurb.create({
-            blurb: req.body.blurb,
-            UserId: req.body.UserId
-        }).then(dbModel => res.json(dbModel))
+        console.log(`this is the req.body.blurb ${req.body.blurb}`)
+        console.log(`this is the req.params ${req.params.blurb}`)
+        db.Blurb.create(req.body).then(dbModel => res.json(dbModel))
         .catch(err => res.status(500).json(err));
     },
     //works in postman

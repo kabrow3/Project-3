@@ -22,7 +22,7 @@ class Nav extends React.Component {
   render() {
     return (
       <div>
-        <nav className="navbar navbar--dark bg-color">
+        <nav className="navbar navbar--dark bg-color px-6 py-3">
           <Link to={"/"} className="navbar-brand">TMDB</Link>
           <ul className="nav justify-content-end">
             <li className="nav-item">
