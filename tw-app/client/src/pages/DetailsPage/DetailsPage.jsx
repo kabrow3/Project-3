@@ -55,10 +55,8 @@ class DetailsPage extends React.Component {
                         <div className="row">
                             <div className="blurb-modal">
                                 <button onClick={this.onOpenModal} className="btn btn-primary">Add Feed Back</button>
-                                <BlurbModal 
-                                id={this.state.id}
-                                title={this.state.results.title}
-                                imdbid={this.state.results.imdbid}
+                                <BlurbModal
+                                MovieImdbID={this.state.results.imdbid}
                                 open={this.state.open} onCloseModal={this.onCloseModal} />
                             </div>
                         </div>
