@@ -16,11 +16,11 @@ export default {
   },
   // update a blurb in the db
   updateBlurb: function(blurb) {
-    return axios.put("/api/movies", blurb);
+    return axios.put("/api/route/movies", blurb);
   },
   // find blurbs attached to movies
-  findBlurb: function(imdbID) {
-    return axios.get("api/blurb/" + MovieImdbID)
+  findBlurb: function(MovieImdbID) {
+    return axios.get("api/route/blurb/" + MovieImdbID)
     ;
   },
   // find all triggers in db
