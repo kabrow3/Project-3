@@ -19,8 +19,8 @@ export default {
     return axios.put("/api/movies", blurb);
   },
   // find blurbs attached to movies
-  findBlurb: function(imdbID) {
-    return axios.get("api/blurb/" + imdbID)
+  findBlurb: function(MovieImdbID) {
+    return axios.get("api/route/blurb/" + MovieImdbID)
     ;
   },
   // find all triggers in db
