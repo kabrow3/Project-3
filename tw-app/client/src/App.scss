@@ -1,5 +1,11 @@
 @import 'styles/partials/_variables.scss';
+@import 'styles/partials/_typography.scss';
+@import 'styles/partials/_colors.scss';
 
+
+.block {
+      display:block;
+}
 
 .App {
       text-align: center;
