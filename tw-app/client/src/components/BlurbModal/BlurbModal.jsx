@@ -26,6 +26,12 @@ class BlurbModal extends React.Component {
     blurb: ''
   };
 
+  componentDidMount() {
+    API.findAllTriggers()
+    .then(res=> {
+      console.log(res);
+  }
+
   // componentDidMount() {
   //   fetch(API.findAllTriggers)
   //     .then((response) => {
@@ -37,8 +43,8 @@ class BlurbModal extends React.Component {
   //       this.setState({ triggers: [{value: '', display: '(Select your trigger)'}].concat(triggersFromApi) });
   //     }).catch(error => {
   //       console.log(error);
-  //     });
-  // }
+    );
+  }
 
   handleChange = (e) => this.setState({ [e.target.name]: e.target.value });
 

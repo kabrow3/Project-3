@@ -56,6 +56,7 @@ module.exports = {
 
     //route works
     findBlurb: function(req, res) {
+        console.log(`controller imdbid ${req.params.imdbID}`)
         var imdbID = req.params.imdbID
         db.sequelize
             .query(
