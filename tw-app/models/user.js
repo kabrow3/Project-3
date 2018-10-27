@@ -23,7 +23,7 @@ module.exports = function(sequelize, DataTypes) {
     User.associate = function(models) {
       User.hasMany(models.Blurb);
       // for favourite movies list
-      User.hasMany(models.Movie);
+      User.belongsTo(models.Movie);
     };
     return User;
   };
