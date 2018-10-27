@@ -11,7 +11,8 @@ export default {
   },
   // post anew blurb
   insertBlurb: function(blurb) {
-    return axios.post("/api/route/blurb", blurb);
+    console.log(`api post blurb ${blurb}`)
+    return axios.post("/api/route/blurb/", blurb);
   },
   // update a blurb in the db
   updateBlurb: function(blurb) {

@@ -3,14 +3,14 @@ import BlurbModal from "../../components/BlurbModal";
 import Movie from "../../components/Movie";
 import imdbAPI from "../../utils/imdbAPI";
 import API from "../../utils/API";
-import './DetailsPage.css';
-import Blurb from "../../components/Blurb"
+import './DetailsPageTV.css';
 
-class DetailsPage extends React.Component {
+class DetailsPageTV extends React.Component {
     state = {
         open: false,
         results: [],
-        blurbs:[]
+        blurbs:[],
+        episodes:[]
     };
 
     componentDidMount() {
@@ -18,6 +18,12 @@ class DetailsPage extends React.Component {
             console.log("Det Res", res);
             this.setState({
                 results: res
+            }, () => console.log(this.state));
+        });
+        imdbAPI.getTV(this.state.results.title).then(eps => {
+            console.log("Ep det", eps);
+            this.setState({
+                episodes: eps
             }, () => console.log(this.state));
         });
         API.findBlurb(this.props.match.params.imdbid).then(res=> {
@@ -31,10 +37,6 @@ class DetailsPage extends React.Component {
 
     onOpenModal = () => {
         this.setState({ open: true });
-        API.insertMovie(this.state.results.title, this.state.results.imdbid).then(res=> {
-            console.log(res);
-        })
-
     };
 
     onCloseModal = () => {
@@ -55,8 +57,8 @@ class DetailsPage extends React.Component {
                         <div className="row">
                             <div className="blurb-modal">
                                 <button onClick={this.onOpenModal} className="btn btn-primary">Add Feed Back</button>
-                                <BlurbModal
-                                MovieImdbID={this.state.results.imdbid}
+                                <BlurbModal 
+                                title={this.state.results.title} 
                                 open={this.state.open} onCloseModal={this.onCloseModal} />
                             </div>
                         </div>
@@ -68,7 +70,7 @@ class DetailsPage extends React.Component {
                                 year={this.state.results.year}
                                 rated={this.state.results.rated}
                                 runtime={this.state.results.runtime}
-                                genres={this.state.results.genres}
+                                genre={this.state.results.genre}
                                 director={this.state.results.director}
                                 writer={this.state.results.writer}
                                 actors={this.state.results.actors}
@@ -88,7 +90,7 @@ class DetailsPage extends React.Component {
                     <div className="col-md-12">
                         <h4>Known Triggers</h4>
                         {/* blurb component */}
-                        <Blurb />
+                        {/* <Blurb /> */}
                     </div>
                 </div>
             </div>
@@ -96,4 +98,4 @@ class DetailsPage extends React.Component {
     }
 }
 
-export default DetailsPage;
+export default DetailsPageTV;
