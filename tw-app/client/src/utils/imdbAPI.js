@@ -6,7 +6,7 @@ import * as imdb from "imdb-api";
 export default {
   // Finds the top movie result for the given title
   getMovie: function(movie) {
-    console.log(movie);
+    // console.log(movie);
     return imdb.get({name: movie}, {apiKey: '8ff70e2d',});
   },
   // Finds the movie with the given id
@@ -15,7 +15,7 @@ export default {
   },
   // Returns all movie and tv results for the search term
   searchMovie: function(sq) {
-    console.log(sq);
+    // console.log(sq);
     return imdb.search({name: sq}, {apiKey: '8ff70e2d'});
   },
   // Returns the top tv result for the given title, as well as all the episodes

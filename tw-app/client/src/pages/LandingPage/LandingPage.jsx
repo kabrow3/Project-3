@@ -13,8 +13,8 @@ import API from "../../utils/API";
 class LandingPage extends React.Component {
     state = {
         sq: "",//search query entered by user
-        imdbid: "",
         results: [],//array of results returned from api
+        example:[]
         // previousSearch: {},//previous search term saved after search completed
         // noResults: false,//boolean used as flag for conditional rendering
     };
@@ -24,19 +24,21 @@ class LandingPage extends React.Component {
     handleSubmit= async (e) => {
         e.preventDefault()
 
-        console.log(this.state.sq);
+        // console.log(this.state.sq);
 
         imdbAPI.searchMovie(this.state.sq).then(res => {
-            // console.log("RES", res);
+            console.log("RES", res);
 
             this.setState({
-                imdbid: res.results.imdbid,
                 results: res.results
-            }, () => console.log(this.state));
+            }, () => console.log("STATE", this.state));
         });
 
         imdbAPI.getMovie(this.state.sq).then(res=> {
             console.log("DET", res);
+            this.setState({
+                example: res
+            }, () => console.log("STATE2", this.state, this.state.example));
         });
     }
 
@@ -71,6 +73,7 @@ class LandingPage extends React.Component {
                             title={movie.title}
                             poster={movie.poster}
                             year={movie.year}
+                            type={movie.type}
                           />
                         )
                       )
