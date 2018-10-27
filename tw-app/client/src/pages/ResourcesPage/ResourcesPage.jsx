@@ -5,7 +5,7 @@ import InputBox from "../../components/InputBox";
 import Movie from "../../components/Movie";
 import Movies from "../../components/Movies";
 
-class LandingPage extends React.Component {
+class ResourcesPage extends React.Component {
     state = {
         sq: "",//search query entered by user
         results: [],//array of results returned from api
@@ -57,4 +57,4 @@ class LandingPage extends React.Component {
     }
 }
 
-export default LandingPage;
+export default ResourcesPage;

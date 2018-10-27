@@ -44,22 +44,8 @@ class BlurbModal extends React.Component {
 
   handleClick = async (e) => {
     e.preventDefault()
+    
 
-    // axios.post('/api/auth', this.state)
-    //     .then(res => console.log(res.data))
-    //     .catch(err => console.log(err));
-
-    //   try {
-    //     const { data } = await axios.post('', this.state);
-
-    //     this.setState({ blurb: '' });
-
-
-    //     console.log(data);
-
-    //   } catch (err) {
-    //     console.log(err);
-    //   }
   }
 
   render() {

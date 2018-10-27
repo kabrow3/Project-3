@@ -2,12 +2,14 @@ import React from "react";
 import BlurbModal from "../../components/BlurbModal";
 import Movie from "../../components/Movie";
 import imdbAPI from "../../utils/imdbAPI";
+import API from "../../utils/API";
 import './DetailsPage.css';
 
 class DetailsPage extends React.Component {
     state = {
         open: false,
-        results: []
+        results: [],
+        blurbs:[]
     };
 
     componentDidMount() {
@@ -17,6 +19,13 @@ class DetailsPage extends React.Component {
                 results: res
             }, () => console.log(this.state));
         });
+        API.findBlurb(this.props.match.params.imdbid).then(res=> {
+            console.log("DB res", res);
+            this.setState({
+                blurbs: res
+            }, () => console.log(this.state));
+        });
+
     };
 
     onOpenModal = () => {
