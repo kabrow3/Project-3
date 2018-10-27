@@ -38,7 +38,9 @@ module.exports = {
     insertBlurb: function(req,res) {
         db.Blurb.create({
             blurb: req.body.blurb,
-            UserId: req.body.UserId
+            UserId: req.body.UserId,
+            MovieImdbID: req.body.MovieImdbID,
+            TriggerId: req.body.TriggerId
         }).then(dbModel => res.json(dbModel))
         .catch(err => res.status(500).json(err));
     },
