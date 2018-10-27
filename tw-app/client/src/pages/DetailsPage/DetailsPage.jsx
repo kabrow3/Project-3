@@ -15,19 +15,23 @@ class DetailsPage extends React.Component {
     };
 
     componentDidMount() {
+        console.log("Component did mount")
+        console.log(this.props.match.params.imdbid)
+        var MovieImdbID = this.props.match.params.imdbid
         imdbAPI.getMoviebyID(this.props.match.params.imdbid).then(res => {
             console.log("Det Res", res);
             this.setState({
                 results: res
             }, () => console.log(this.state));
-        }).then(
-        API.findBlurb(this.props.match.params.imdbid).then(res=> {
-            console.log(`this is the result.imdbid ${this.props.match.params.imdbid}`)
+        })
+        API.findBlurb(MovieImdbID).then(res=> {
+            // console.log(MovieImdbID);
+            // console.log(`this is the result.imdbid ${this.props.match.params.imdbid}`)
             console.log("DB res", res);
             this.setState({
-                blurbs: res
-            }, () => console.log(this.state));
-        }))
+                blurbs: res.data
+            }, () => console.log(this.state.blurbs));
+        })
 
     };
 

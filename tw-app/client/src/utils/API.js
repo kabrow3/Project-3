@@ -20,7 +20,8 @@ export default {
   },
   // find blurbs attached to movies
   findBlurb: function(MovieImdbID) {
-    return axios.get("api/route/blurb/" + MovieImdbID)
+    console.log(`Here we are in API.js Line 23 ${MovieImdbID}`)
+    return axios.get("/api/route/blurb/" + MovieImdbID)
     ;
   },
   // find all triggers in db

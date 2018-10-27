@@ -56,6 +56,7 @@ module.exports = {
 
     //route works
     findBlurb: function(req, res) {
+        console.log(`Hello from controller.js line 59`)
         var MovieImdbID = req.params.MovieImdbID
         db.Blurb.findAll({
             where: {MovieImdbID: MovieImdbID},
