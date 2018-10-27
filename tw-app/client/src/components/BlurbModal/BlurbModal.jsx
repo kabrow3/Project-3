@@ -42,10 +42,23 @@ class BlurbModal extends React.Component {
 
   handleChange = (e) => this.setState({ [e.target.name]: e.target.value });
 
-  handleClick = async (e) => {
+  handleClick = (e) => {
     e.preventDefault()
-    
+    console.log(this.state.blurb)
 
+    API.insertBlurb({
+      blurb : this.state.blurb,
+      UserId: this.props.UserId,
+      MovieImdbID: this.props.MovieImdbID,
+      TriggerId: this.props.TriggerId
+    })
+    .then(res => {
+      console.log(`I'm the response ${res}`);
+      // this.setState({
+      //     blurb: '',
+      //     open: false
+      // }, () => console.log(this.state));
+  });
   }
 
   render() {
@@ -92,7 +105,7 @@ class BlurbModal extends React.Component {
                 className="basic-multi-select"
                 classNamePrefix="select" />
             </label>
-            <InputBox type="text" name="blurb" label="Blurb" value={this.state.email} onChange={this.handleChange} />
+            <InputBox type="text" name="blurb" label="Blurb" value={this.state.blurb} onChange={this.handleChange} />
           </div>
           <br />
           <button type='submit' className='col-sm-12 btn btn-primary' onClick={this.handleClick}>Submit</button>

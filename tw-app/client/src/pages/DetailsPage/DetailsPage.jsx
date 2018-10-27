@@ -4,6 +4,7 @@ import Movie from "../../components/Movie";
 import imdbAPI from "../../utils/imdbAPI";
 import API from "../../utils/API";
 import './DetailsPage.css';
+import Blurb from "../../components/Blurb"
 
 class DetailsPage extends React.Component {
     state = {
@@ -30,6 +31,10 @@ class DetailsPage extends React.Component {
 
     onOpenModal = () => {
         this.setState({ open: true });
+        API.insertMovie(this.state.results.title, this.state.results.imdbid).then(res=> {
+            console.log(res);
+        })
+
     };
 
     onCloseModal = () => {
@@ -50,7 +55,9 @@ class DetailsPage extends React.Component {
                         <div className="row">
                             <div className="blurb-modal">
                                 <button onClick={this.onOpenModal} className="btn btn-primary">Add Feed Back</button>
-                                <BlurbModal open={this.state.open} onCloseModal={this.onCloseModal} />
+                                <BlurbModal
+                                MovieImdbID={this.state.results.imdbid}
+                                open={this.state.open} onCloseModal={this.onCloseModal} />
                             </div>
                         </div>
                     </div>
@@ -61,7 +68,7 @@ class DetailsPage extends React.Component {
                                 year={this.state.results.year}
                                 rated={this.state.results.rated}
                                 runtime={this.state.results.runtime}
-                                genre={this.state.results.genre}
+                                genres={this.state.results.genres}
                                 director={this.state.results.director}
                                 writer={this.state.results.writer}
                                 actors={this.state.results.actors}
@@ -81,7 +88,7 @@ class DetailsPage extends React.Component {
                     <div className="col-md-12">
                         <h4>Known Triggers</h4>
                         {/* blurb component */}
-                        {/* <Blurb /> */}
+                        <Blurb />
                     </div>
                 </div>
             </div>
