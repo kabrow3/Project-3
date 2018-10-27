@@ -1,8 +1,16 @@
 .navbar--dark {
-  background-color: #563d7c;
+  /* background-color: #563d7c; */
 }
 
 .navbar--dark a {
   color: white;
+}
+
+a.dropdown-item {
+  color: black;
+}
+
+.bg-color {
+  background-color: #F0828C
 }
 /*# sourceMappingURL=Nav.css.map */

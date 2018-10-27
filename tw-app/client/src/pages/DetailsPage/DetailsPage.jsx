@@ -52,7 +52,7 @@ class DetailsPage extends React.Component {
                                 year={this.state.results.year}
                                 rated={this.state.results.rated}
                                 runtime={this.state.results.runtime}
-                                genre={this.state.results.genre}
+                                genres={this.state.results.genres}
                                 director={this.state.results.director}
                                 writer={this.state.results.writer}
                                 actors={this.state.results.actors}
