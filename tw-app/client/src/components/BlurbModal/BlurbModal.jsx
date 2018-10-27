@@ -48,9 +48,7 @@ class BlurbModal extends React.Component {
 
     API.insertBlurb({
       blurb : this.state.blurb,
-      id: this.props.id,
-      imdbid: this.props.imdbid,
-      title: this.props.title
+      imdbid: this.props.imdbid
     })
     .then(res => {
       console.log(`I'm the response ${res}`);
