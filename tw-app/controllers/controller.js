@@ -56,13 +56,13 @@ module.exports = {
 
     //route works
     findBlurb: function(req, res) {
-        var imdbID = req.params.imdbID
-        db.sequelize
-            .query(
-                "select blurb from blurbs where id in (select distinct BlurbID from movies where imdbID = ?)",
-                {replacements: [imdbID]}
-            ).then(dbModel => res.json(dbModel))
-            .catch(err => res.status(500).json(err));
+        console.log(`Hello from controller.js line 59`)
+        var MovieImdbID = req.params.MovieImdbID
+        db.Blurb.findAll({
+            where: {MovieImdbID: MovieImdbID},
+            attributes: ['blurb']
+        }).then(dbModel => res.json(dbModel))
+        .catch(err => res.status(500).json(err));
     },
 
     findAllTriggers: function(req,res) {

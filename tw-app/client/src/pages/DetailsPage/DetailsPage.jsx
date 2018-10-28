@@ -4,7 +4,8 @@ import Movie from "../../components/Movie";
 import imdbAPI from "../../utils/imdbAPI";
 import API from "../../utils/API";
 import './DetailsPage.css';
-import Blurb from "../../components/Blurb"
+import Blurb from "../../components/Blurb";
+import { Panel, PanelBody, PanelHeading } from '../../components/Panel';
 
 class DetailsPage extends React.Component {
     state = {
@@ -14,18 +15,23 @@ class DetailsPage extends React.Component {
     };
 
     componentDidMount() {
+        console.log("Component did mount")
+        console.log(this.props.match.params.imdbid)
+        var MovieImdbID = this.props.match.params.imdbid
         imdbAPI.getMoviebyID(this.props.match.params.imdbid).then(res => {
             console.log("Det Res", res);
             this.setState({
                 results: res
             }, () => console.log(this.state));
-        });
-        API.findBlurb(this.props.match.params.imdbid).then(res=> {
+        })
+        API.findBlurb(MovieImdbID).then(res=> {
+            // console.log(MovieImdbID);
+            // console.log(`this is the result.imdbid ${this.props.match.params.imdbid}`)
             console.log("DB res", res);
             this.setState({
-                blurbs: res
-            }, () => console.log(this.state));
-        });
+                blurbs: res.data
+            }, () => console.log(this.state.blurbs));
+        })
 
     };
 
@@ -86,9 +92,22 @@ class DetailsPage extends React.Component {
                 </div> */}
                 <div className="row">
                     <div className="col-md-12">
-                        <h4>Known Triggers</h4>
+                        <h4>Known Blurbs</h4>
+                        <Panel>
+                  <PanelBody>
+                    {
+                      this.state.blurbs.map((blurb, i) => (
+                          <Blurb
+                            key={i}
+                            blurb={blurb.blurb}
+                          />
+                        )
+                      )
+                    }
+                  </PanelBody>
+                </Panel>
                         {/* blurb component */}
-                        <Blurb />
+                        {/* <Blurb /> */}
                     </div>
                 </div>
             </div>

@@ -2,7 +2,8 @@ import React from "react";
 import Modal from "react-responsive-modal";
 import InputBox from "../InputBox";
 import API from "../../utils/API";
-import Select from 'react-select'
+import Select from 'react-select';
+import { withRouter } from 'react-router-dom';
 
 const triggerOptions = [
   { value: 'Eating Disorders', label: 'Eating Disorders' },
@@ -26,6 +27,12 @@ class BlurbModal extends React.Component {
     blurb: ''
   };
 
+  componentDidMount() {
+    API.findAllTriggers()
+    .then(res=> {
+      console.log(res);
+  }
+
   // componentDidMount() {
   //   fetch(API.findAllTriggers)
   //     .then((response) => {
@@ -37,8 +44,8 @@ class BlurbModal extends React.Component {
   //       this.setState({ triggers: [{value: '', display: '(Select your trigger)'}].concat(triggersFromApi) });
   //     }).catch(error => {
   //       console.log(error);
-  //     });
-  // }
+    );
+  }
 
   handleChange = (e) => this.setState({ [e.target.name]: e.target.value });
 
@@ -54,6 +61,9 @@ class BlurbModal extends React.Component {
     })
     .then(res => {
       console.log(`I'm the response ${res}`);
+      this.props.history.push('/details/' + this.props.MovieImdbID);
+      location.reload(); // eslint-disable-line
+      // location.reload();
       // this.setState({
       //     blurb: '',
       //     open: false
@@ -115,4 +125,4 @@ class BlurbModal extends React.Component {
   }
 }
 
-export default BlurbModal;
+export default withRouter(BlurbModal);

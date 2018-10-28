@@ -26,7 +26,7 @@ router.route("/blurb")
     .put(controller.updateBlurb);
 
 // find all blurbs attached to a movie
-router.route("/blurb/:imdbID")
+router.route("/blurb/:MovieImdbID")
     .get(controller.findBlurb);
 
 router.route("/triggers")
