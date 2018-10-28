@@ -7,6 +7,8 @@ import LandingPage from "./pages/LandingPage";
 import Nav from "./components/Nav";
 import NoMatch from "./pages/NoMatch";
 import UserPage from "./pages/UserPage";
+import ResourcesPage from "./pages/ResourcesPage";
+import DetailsPageTV from "./pages/DetailsPageTV";
 
 class App extends React.Component {
   state = {
@@ -30,8 +32,10 @@ class App extends React.Component {
 
 CreateAcc = (props) => <CreateAcc user={this.state.user} {...props} />;
 DetailsPage = (props) => <DetailsPage user={this.state.user} {...props} />;
+DetailsPageTV = (props) => <DetailsPageTV user={this.state.user} {...props} />;
 LandingPage = (props) => <LandingPage user={this.state.user} {...props} />;
 UserPage = (props) => <UserPage user={this.state.user} {...props} />;
+ResourcesPage = (props) => <ResourcesPage user={this.state.user} {...props} />
 
   render () {
     return (
@@ -45,9 +49,12 @@ UserPage = (props) => <UserPage user={this.state.user} {...props} />;
             <Route exact path="/details/:imdbid" 
             component={DetailsPage} 
             />
-            <Route exact path="/dummy/:id" 
-            // component={} 
+            {/* <Route exact path="/detailstv/:imdbid" 
+            component={DetailsPageTV} 
             />
+            <Route exact path="/resources" 
+            // component={ResourcesPage} 
+            /> */}
             <Route exact path="/create-account" 
              component={CreateAcc} 
             />
