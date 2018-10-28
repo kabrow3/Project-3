@@ -7,6 +7,7 @@ import LandingPage from "./pages/LandingPage";
 import Nav from "./components/Nav";
 import NoMatch from "./pages/NoMatch";
 import UserPage from "./pages/UserPage";
+import './App.css';
 
 class App extends React.Component {
   state = {

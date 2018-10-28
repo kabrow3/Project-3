@@ -1,3 +1,24 @@
+h1, h2, h3, h4, h5, p {
+  font-family: 'Rubik', sans-serif;
+  color: #66626C;
+}
+
+.gradient--salmon {
+  background: linear-gradient(93.13deg, #FF6F9E 0.06%, #FF7562 100%);
+}
+
+.text--light {
+  color: #fff;
+}
+
+.background--white {
+  background-color: white;
+}
+
+.block {
+  display: block;
+}
+
 .App {
   text-align: center;
 }

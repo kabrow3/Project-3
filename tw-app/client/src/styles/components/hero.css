@@ -1,0 +1,32 @@
+.hero {
+  background: url("../../images/home-hero.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  padding-top: 5em;
+  padding-bottom: 5em;
+}
+
+.hero h1 {
+  letter-spacing: 0.06em;
+  text-shadow: 0px 3px 8px rgba(0, 0, 0, 0.38);
+  font-weight: 700;
+  font-size: 3.6rem;
+}
+
+.hero span {
+  font-size: 1.3rem;
+  letter-spacing: 0.04em;
+}
+
+.hero--brain img {
+  max-width: 350px;
+}
+
+@media (min-width: 980px) {
+  .hero {
+    padding-top: 7em;
+    padding-bottom: 5em;
+  }
+}
+/*# sourceMappingURL=hero.css.map */
