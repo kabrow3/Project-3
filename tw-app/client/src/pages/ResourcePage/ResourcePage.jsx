@@ -3,17 +3,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { withRouter } from 'react-router-dom';
 import InputBox from "../../components/InputBox";
-// import Movie from "../../components/Movie";
 import Movies from "../../components/Movies";
-import { Container, Row, Col } from "../../components/Grid";
-import { H1, H3, H4 } from '../../components/Headings';
 import { Panel, PanelBody, PanelHeading } from '../../components/Panel';
 import API from "../../utils/API";
-import '../../styles/components/hero.css';
+import '../../styles/components/resources.css';
 import '../../styles/components/search.css';
 import bear from '../../images/bear-hug-shadow.png';
 
-class LandingPage extends React.Component {
+class ResourcePage extends React.Component {
     state = {
         sq: "",//search query entered by user
         imdbid: "",
@@ -49,32 +46,17 @@ class LandingPage extends React.Component {
             <div className="wrapper">
                 <div className="row ">
                     <div className="col col-12 ">
-                        <div className="hero">
-
-                            <h1 className="text--light text-center big">trigger<br></br>warning</h1>
-                            <span className="text--light text-center block"><em>Prepare for triggering content in movies.</em> </span>
-                            {/* <div className="hero--brain text-center">
-                                <img src={brain}></img>
-                            </div> */}
-                            {/* <div className="hero--bear text-center">
-                                <img src={bear}></img>
-                            </div> */}
-                            <div className="form-wrapper my-5">
-
-                                <form className="mx-auto search form-inline background--white">
-                                    <InputBox type="text" name="sq" placeholder="Search by movie" value={this.state.sq} onChange={this.handleChange} />
-                                    <button type="submit" className="background--white search--button" onClick={this.handleSubmit}><i class="fas fa-search"></i></button>
-                                </form>
-
-                            </div>
+                        <div className="resources--hero">
+                            <h1 className="text--light text-center big">resources</h1>
                         </div>
                     </div>
                 </div>
                 <div class="container">
                     <div class="row justify-content-center py-5">
                         <div class="col-sm-10 col-md-8 col-lg-8 py-5">
-                            <h5 className="pb-2"><strong>Giving survivors the option of <em>consent</em> in their movie viewing experience.</strong></h5>
-                            <p><em>Trigger Warning</em> enables users to search movies for potentially triggering content, and decide whether to engage with it.  Search by trigger type, or view commonly searched movies and triggers. </p>
+                            <h5 className="pb-2"><strong>Whether you are a survivor or friend of a survivor, be encouraged to learn more or get help.</strong></h5>
+                            
+                            <p><em>Below we have compiled a list of resources ranging from hotlines to literature or websites that are helpful for learning more about triggers and trigger warnings.</p>
 
                         </div>
                     </div>
@@ -104,4 +86,4 @@ class LandingPage extends React.Component {
     }
 }
 
-export default LandingPage;
+export default ResourcePage;

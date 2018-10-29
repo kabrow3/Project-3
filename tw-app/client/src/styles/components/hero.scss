@@ -1,16 +1,24 @@
 
 .hero {
-      background: url('../../images/home-hero.jpg');
+     background: url('../../images/ptsd-bg.jpg');
+      // background: url('../../images/soft-lake-bg.jpg');
       background-size:cover;
       background-repeat:no-repeat;
       min-height: 100vh;
-      padding-top:5em;
-      padding-bottom: 5em;
+      // padding-top:5em;
+      // padding-bottom: 5em;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
       h1 {
             letter-spacing: 0.06em;
             text-shadow: 0px 3px 8px rgba(0, 0, 0, 0.38);
             font-weight:700;
-            font-size:3.6rem;
+            font-size:3.5rem;
+            &.big {
+                  font-size:4.6rem;
+            }
       }
       span {
             font-size:1.3rem;
@@ -19,8 +27,11 @@
       &--brain img {
             max-width:350px;
       }
-      @media(min-width:980px){
-            padding-top:7em;
-            padding-bottom:5em;
+      &--bear img {
+            max-width:500px;
       }
+      // @media(min-width:980px){
+      //       //padding-top:7em;
+      //       padding-bottom:5em;
+      // }
 }

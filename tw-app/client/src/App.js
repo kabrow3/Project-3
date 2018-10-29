@@ -7,6 +7,7 @@ import LandingPage from "./pages/LandingPage";
 import Nav from "./components/Nav";
 import NoMatch from "./pages/NoMatch";
 import UserPage from "./pages/UserPage";
+import ResourcePage from "./pages/ResourcePage";
 import './App.css';
 
 class App extends React.Component {
@@ -45,6 +46,9 @@ UserPage = (props) => <UserPage user={this.state.user} {...props} />;
             />
             <Route exact path="/details/:imdbid" 
             component={DetailsPage} 
+            />
+            <Route exact path="/resources" 
+            component={ResourcePage} 
             />
             <Route exact path="/dummy/:id" 
             // component={} 
