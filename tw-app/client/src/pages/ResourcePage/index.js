@@ -1,1 +1,1 @@
-export { default } from "./ResourcePage.jsx";
+export { default } from "./ResourcePage.js"

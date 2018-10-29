@@ -54,8 +54,9 @@ class ResourcePage extends React.Component {
                 <div class="container">
                     <div class="row justify-content-center py-5">
                         <div class="col-sm-10 col-md-8 col-lg-8 py-5">
-                            <h5 className="pb-2"><strong>Giving survivors the option of <em>consent</em> in their movie viewing experience.</strong></h5>
-                            <p><em>Trigger Warning</em> enables users to search movies for potentially triggering content, and decide whether to engage with it.  Search by trigger type, or view commonly searched movies and triggers. </p>
+                            <h5 className="pb-2"><strong>Whether you are a survivor or friend of a survivor, be encouraged to learn more or get help.</strong></h5>
+                            
+                            <p><em>Below we have compiled a list of resources ranging from hotlines to literature or websites that are helpful for learning more about triggers and trigger warnings.</p>
 
                         </div>
                     </div>
