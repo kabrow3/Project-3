@@ -1,10 +1,18 @@
-.movie-figure {
-    position: relative;
-  }
-  
+.movie--trigger {
+  background: #FF7562;
+  padding: 6px 12px 9px 12px;
+  margin: 0 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: white;
+  border-radius: 4px;
+  -webkit-box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.2);
+          box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.2);
+  font-style: italic;
+}
 
-  .movie-title {
-    font-size: 0.875rem;
-    font-weight: 400;
-    margin: 0;
-  }
+.trigger-wrap {
+  margin-top: 10px;
+}
+/*# sourceMappingURL=Movie.css.map */

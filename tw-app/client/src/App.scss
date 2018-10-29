@@ -6,7 +6,10 @@
 .block {
       display:block;
 }
-
+a.nav-link, a.navbar-brand {
+      color:#fff;
+      font-family: 'Rubik', sans-serif;
+}
 .App {
       text-align: center;
       &--logo {

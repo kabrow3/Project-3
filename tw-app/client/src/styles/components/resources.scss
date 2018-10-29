@@ -1,0 +1,9 @@
+.resources {
+      &--hero {
+            background: url('../../images/resources-bg.jpg');
+            // background: url('../../images/soft-lake-bg.jpg');
+            background-size:cover;
+            background-repeat:no-repeat;
+            min-height: 45vh;
+      }
+}

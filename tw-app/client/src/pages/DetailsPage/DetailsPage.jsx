@@ -51,8 +51,8 @@ class DetailsPage extends React.Component {
     render() {
         return (
             <div className="container">
-                <div className="row">
-                    <div className="col-md-6">
+                <div className="row py-4">
+                    <div className="col-md-4">
                         <div className="row">
                             <div className="movie-poster">
                                 <img src={this.state.results.poster}></img>
@@ -67,7 +67,7 @@ class DetailsPage extends React.Component {
                             </div>
                         </div>
                     </div>
-                    <div className="col-md-6">
+                    <div className="col-md-8 py-4">
                         <div className="movie-info">
                             <Movie
                                 title={this.state.results.title}
